@@ -1,0 +1,45 @@
+{
+  "name": "how-to-drastically-reduce-estimated-input-latency-and-time-to-interactive-of-ssr-vue-applications",
+  "version": "0.1.0",
+  "author": "Markus Oberlehner",
+  "homepage": "https://github.com/maoberlehner/how-to-drastically-reduce-estimated-input-latency-and-time-to-interactive-of-ssr-vue-applications",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@avalanche/eslint-config": "^3.0.0",
+    "@avalanche/generic-box-sizing-reset": "^4.0.0-alpha.5",
+    "@avalanche/object-container": "^4.0.0-alpha.8",
+    "@avalanche/object-vertical-spacing": "^4.0.0-alpha.5",
+    "@avalanche/setting-spacings": "^4.0.0-alpha.6",
+    "cross-env": "^5.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "marked": "^0.6.0",
+    "node-sass": "^4.11.0",
+    "node-sass-magic-importer": "^5.3.0",
+    "nuxt": "^2.0.0",
+    "reset-css": "^4.0.1",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.5.21",
+    "vue-lazy-hydration": "^0.1.0-alpha.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^5.1.0",
+    "nodemon": "^1.11.0"
+  },
+  "browserslist": [
+    ">0.25%",
+    "not ie 10",
+    "not op_mini all"
+  ]
+}
