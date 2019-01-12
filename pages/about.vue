@@ -18,18 +18,16 @@
 </template>
 
 <script>
-import {
-  loadOnInteraction,
-  loadSsrOnly,
-  loadWhenVisible,
-} from 'vue-lazy-hydration';
+import AppHero from '../components/AppHero.vue';
+import AppIntro from '../components/AppIntro.vue';
+import ArticleTeaserList from '../components/ArticleTeaserList.vue';
 
 export default {
   name: `AboutPage`,
   components: {
-    AppHero: loadSsrOnly(() => import(`../components/AppHero.vue`)),
-    AppIntro: loadSsrOnly(() => import(`../components/AppIntro.vue`)),
-    ArticleTeaserList: loadSsrOnly(() => import(`../components/ArticleTeaserList.vue`)),
+    AppHero,
+    AppIntro,
+    ArticleTeaserList,
   },
 };
 </script>

@@ -198,35 +198,28 @@
 </template>
 
 <script>
-import {
-  loadOnInteraction,
-  loadSsrOnly,
-  loadWhenVisible,
-} from 'vue-lazy-hydration';
+import AppCounter from '../components/AppCounter.vue';
+import AppHero from '../components/AppHero.vue';
+import AppIntro from '../components/AppIntro.vue';
+import AppMarkdown from '../components/AppMarkdown.vue';
+import AppMediaObject from '../components/AppMediaObject.vue';
+import AppMediaObjectReversed from '../components/AppMediaObjectReversed.vue';
+import ArticleTeaserList from '../components/ArticleTeaserList.vue';
+import ImageSlider from '../components/ImageSlider.vue';
+import LogoTeaserList from '../components/LogoTeaserList.vue';
 
 export default {
   name: `IndexPage`,
   components: {
-    AppCounter: loadOnInteraction(
-      () => import(`../components/AppCounter.vue`),
-      {
-        event: [`click`, `focusin`],
-        selector: `.AppCounter`,
-      },
-    ),
-    AppHero: loadSsrOnly(() => import(`../components/AppHero.vue`)),
-    AppIntro: loadSsrOnly(() => import(`../components/AppIntro.vue`)),
-    AppMarkdown: loadSsrOnly(() => import(`../components/AppMarkdown.vue`)),
-    AppMediaObject: loadSsrOnly(() => import(`../components/AppMediaObject.vue`)),
-    AppMediaObjectReversed: loadSsrOnly(() => import(`../components/AppMediaObjectReversed.vue`)),
-    ArticleTeaserList: loadSsrOnly(() => import(`../components/ArticleTeaserList.vue`)),
-    ImageSlider: loadWhenVisible(
-      () => import(`../components/ImageSlider.vue`),
-      {
-        selector: `.ImageSlider`,
-      },
-    ),
-    LogoTeaserList: loadSsrOnly(() => import(`../components/LogoTeaserList.vue`)),
+    AppCounter,
+    AppHero,
+    AppIntro,
+    AppMarkdown,
+    AppMediaObject,
+    AppMediaObjectReversed,
+    ArticleTeaserList,
+    ImageSlider,
+    LogoTeaserList,
   },
   created() {
     this.imageSlides = [

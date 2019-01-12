@@ -7,16 +7,13 @@
 </template>
 
 <script>
-import {
-  loadSsrOnly,
-} from 'vue-lazy-hydration';
-
+import TheFooter from '../components/TheFooter.vue';
 import TheHeader from '../components/TheHeader.vue';
 
 export default {
   name: `DefaultLayout`,
   components: {
-    TheFooter: loadSsrOnly(() => import(`../components/TheFooter.vue`)),
+    TheFooter,
     TheHeader,
   },
 };
