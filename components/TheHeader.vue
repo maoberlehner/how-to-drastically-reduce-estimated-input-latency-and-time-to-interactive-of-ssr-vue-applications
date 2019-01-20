@@ -10,16 +10,13 @@
 </template>
 
 <script>
-import {
-  loadSsrOnly,
-} from 'vue-lazy-hydration';
-
+import AppLogo from './AppLogo.vue';
 import TheNav from './TheNav.vue';
 
 export default {
   name: `TheHeader`,
   components: {
-    AppLogo: loadSsrOnly(() => import(`./AppLogo.vue`)),
+    AppLogo,
     TheNav,
   },
 };

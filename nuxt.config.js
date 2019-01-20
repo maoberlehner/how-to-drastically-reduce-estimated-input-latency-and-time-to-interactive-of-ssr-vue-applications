@@ -20,7 +20,6 @@ export default {
   },
   loading: { color: `#fff` },
   mode: `universal`,
-  modules: [`vue-lazy-hydration/nuxt`],
   render: {
     resourceHints: false,
   },

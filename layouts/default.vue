@@ -1,23 +1,24 @@
 <template>
   <div class="DefaultLayout o-vertical-spacing o-vertical-spacing--xxl">
-    <TheHeader/>
+    <LazyHydrate on-interaction="mouseenter">
+      <TheHeader/>
+    </LazyHydrate>
     <nuxt/>
-    <TheFooter/>
+    <LazyHydrate ssr-only>
+      <TheFooter/>
+    </LazyHydrate>
   </div>
 </template>
 
 <script>
-import {
-  loadSsrOnly,
-} from 'vue-lazy-hydration';
-
-import TheHeader from '../components/TheHeader.vue';
+import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
   name: `DefaultLayout`,
   components: {
-    TheFooter: loadSsrOnly(() => import(`../components/TheFooter.vue`)),
-    TheHeader,
+    LazyHydrate,
+    TheFooter: () => import(`../components/TheFooter.vue`),
+    TheHeader: () => import(`../components/TheHeader.vue`),
   },
 };
 </script>

@@ -1,232 +1,301 @@
 <template>
   <!-- eslint-disable max-len -->
   <div class="IndexPage o-vertical-spacing o-vertical-spacing--xxl">
-    <div class="o-container">
-      <AppIntro
-        headline="Drastically Reduce Estimated Input Latency"
-        body="And Time to Interactive of SSR Vue.js Applications."
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppIntro
+          headline="Drastically Reduce Estimated Input Latency"
+          body="And Time to Interactive of SSR Vue.js Applications."
+        />
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <AppHero
+        src="https://images.unsplash.com/photo-1515074060204-9be35bb919b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80"
       />
-    </div>
+    </LazyHydrate>
 
-    <AppHero src="https://images.unsplash.com/photo-1515074060204-9be35bb919b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80"/>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <ArticleTeaserList/>
+      </div>
+    </LazyHydrate>
 
     <div class="o-container">
-      <ArticleTeaserList/>
-    </div>
-
-    <div class="o-container">
-      <AppMarkdown
-        :md="markdownText"
-      />
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          :md="markdownText"
+        />
+      </LazyHydrate>
     </div>
 
     <div class="o-container o-vertical-spacing">
-      <AppMarkdown
-        md="## Counter (loadOnInteraction)"
-      />
-      <AppCounter/>
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          md="## Counter (loadOnInteraction)"
+        />
+      </LazyHydrate>
+      <LazyHydrate :on-interaction="['touchstart', 'click']">
+        <AppCounter
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
+        />
+      </LazyHydrate>
     </div>
 
     <div class="o-container o-vertical-spacing">
-      <AppMarkdown
-        md="## Slider (loadWhenVisible)"
-      />
-      <ImageSlider :slides="imageSlides"/>
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          md="## Slider (loadWhenVisible)"
+        />
+      </LazyHydrate>
+      <LazyHydrate when-visible>
+        <ImageSlider :slides="imageSlides"/>
+      </LazyHydrate>
     </div>
 
-    <div class="o-container">
-      <AppMediaObject
-        body="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1510151490593-aa277bc49f37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObject
+          body="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1510151490593-aa277bc49f37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObjectReversed
+          body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObject
+          body="Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
 
     <div class="o-container">
-      <AppMediaObjectReversed
-        body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          :md="markdownText2"
+        />
+      </LazyHydrate>
     </div>
 
-    <div class="o-container">
-      <AppMediaObject
-        body="Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <ArticleTeaserList/>
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <LogoTeaserList/>
+      </div>
+    </LazyHydrate>
 
     <div class="o-container">
-      <AppMarkdown
-        :md="markdownText2"
-      />
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          :md="markdownText"
+        />
+      </LazyHydrate>
     </div>
 
-    <div class="o-container">
-      <ArticleTeaserList/>
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <ArticleTeaserList/>
+      </div>
+    </LazyHydrate>
 
-    <div class="o-container">
-      <LogoTeaserList/>
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObject
+          body="Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1510151490593-aa277bc49f37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
 
-    <div class="o-container">
-      <AppMarkdown
-        :md="markdownText"
-      />
-    </div>
-
-    <div class="o-container">
-      <ArticleTeaserList/>
-    </div>
-
-    <div class="o-container">
-      <AppMediaObject
-        body="Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1510151490593-aa277bc49f37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
-
-    <div class="o-container">
-      <AppMediaObjectReversed
-        body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObjectReversed
+          body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
 
     <div class="o-container o-vertical-spacing">
-      <AppMarkdown
-        md="## Slider (loadWhenVisible)"
-      />
-      <ImageSlider :slides="imageSlides"/>
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          md="## Slider (loadWhenVisible)"
+        />
+      </LazyHydrate>
+      <LazyHydrate when-visible>
+        <ImageSlider :slides="imageSlides"/>
+      </LazyHydrate>
     </div>
 
-    <div class="o-container">
-      <AppMediaObject
-        body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObject
+          body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
 
-    <div class="o-container">
-      <AppMediaObjectReversed
-        body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
-
-    <div class="o-container o-vertical-spacing">
-      <AppMarkdown
-        md="## Slider (loadWhenVisible)"
-      />
-      <ImageSlider :slides="imageSlides"/>
-    </div>
-
-    <div class="o-container">
-      <AppMarkdown
-        :md="markdownText"
-      />
-    </div>
-
-    <div class="o-container">
-      <ArticleTeaserList/>
-    </div>
-
-    <div class="o-container">
-      <ArticleTeaserList/>
-    </div>
-
-    <div class="o-container">
-      <AppMarkdown
-        :md="markdownText2"
-      />
-    </div>
-
-    <div class="o-container">
-      <LogoTeaserList/>
-    </div>
-
-    <div class="o-container">
-      <AppMediaObject
-        body="Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1510151490593-aa277bc49f37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObjectReversed
+          body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
 
     <div class="o-container o-vertical-spacing">
-      <AppMarkdown
-        md="## Slider (loadWhenVisible)"
-      />
-      <ImageSlider :slides="imageSlides"/>
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          md="## Slider (loadWhenVisible)"
+        />
+      </LazyHydrate>
+      <LazyHydrate when-visible>
+        <ImageSlider :slides="imageSlides"/>
+      </LazyHydrate>
     </div>
 
     <div class="o-container">
-      <AppMediaObject
-        body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          :md="markdownText"
+        />
+      </LazyHydrate>
     </div>
 
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <ArticleTeaserList/>
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <ArticleTeaserList/>
+      </div>
+    </LazyHydrate>
+
     <div class="o-container">
-      <AppMediaObjectReversed
-        body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-        src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
-      />
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          :md="markdownText2"
+        />
+      </LazyHydrate>
     </div>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <LogoTeaserList/>
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObject
+          body="Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1510151490593-aa277bc49f37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
 
     <div class="o-container o-vertical-spacing">
-      <AppMarkdown
-        md="## Slider (loadWhenVisible)"
-      />
-      <ImageSlider :slides="imageSlides"/>
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          md="## Slider (loadWhenVisible)"
+        />
+      </LazyHydrate>
+      <LazyHydrate when-visible>
+        <ImageSlider :slides="imageSlides"/>
+      </LazyHydrate>
+    </div>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObject
+          body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
+
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <AppMediaObjectReversed
+          body="Stet clita kasd gubergren, no sea takimata est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          src="https://images.unsplash.com/photo-1509904446473-1b8b71534223?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=280&q=80"
+        />
+      </div>
+    </LazyHydrate>
+
+    <div class="o-container o-vertical-spacing">
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          md="## Slider (loadWhenVisible)"
+        />
+      </LazyHydrate>
+      <LazyHydrate when-visible>
+        <ImageSlider :slides="imageSlides"/>
+      </LazyHydrate>
     </div>
 
     <div class="o-container">
-      <AppMarkdown
-        :md="markdownText"
-      />
+      <LazyHydrate ssr-only>
+        <AppMarkdown
+          :md="markdownText"
+        />
+      </LazyHydrate>
     </div>
 
-    <div class="o-container">
-      <LogoTeaserList/>
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <LogoTeaserList/>
+      </div>
+    </LazyHydrate>
 
-    <div class="o-container">
-      <ArticleTeaserList/>
-    </div>
+    <LazyHydrate ssr-only>
+      <div class="o-container">
+        <ArticleTeaserList/>
+      </div>
+    </LazyHydrate>
   </div>
   <!-- eslint-enable -->
 </template>
 
 <script>
-import {
-  loadOnInteraction,
-  loadSsrOnly,
-  loadWhenVisible,
-} from 'vue-lazy-hydration';
+import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
   name: `IndexPage`,
   components: {
-    AppCounter: loadOnInteraction(
-      () => import(`../components/AppCounter.vue`),
-      {
-        event: [`click`, `focusin`],
-        selector: `.AppCounter`,
-      },
-    ),
-    AppHero: loadSsrOnly(() => import(`../components/AppHero.vue`)),
-    AppIntro: loadSsrOnly(() => import(`../components/AppIntro.vue`)),
-    AppMarkdown: loadSsrOnly(() => import(`../components/AppMarkdown.vue`)),
-    AppMediaObject: loadSsrOnly(() => import(`../components/AppMediaObject.vue`)),
-    AppMediaObjectReversed: loadSsrOnly(() => import(`../components/AppMediaObjectReversed.vue`)),
-    ArticleTeaserList: loadSsrOnly(() => import(`../components/ArticleTeaserList.vue`)),
-    ImageSlider: loadWhenVisible(
-      () => import(`../components/ImageSlider.vue`),
-      {
-        selector: `.ImageSlider`,
-      },
-    ),
-    LogoTeaserList: loadSsrOnly(() => import(`../components/LogoTeaserList.vue`)),
+    AppCounter: () => import(`../components/AppCounter.vue`),
+    AppHero: () => import(`../components/AppHero.vue`),
+    AppIntro: () => import(`../components/AppIntro.vue`),
+    AppMarkdown: () => import(`../components/AppMarkdown.vue`),
+    AppMediaObject: () => import(`../components/AppMediaObject.vue`),
+    AppMediaObjectReversed: () => import(`../components/AppMediaObjectReversed.vue`),
+    ArticleTeaserList: () => import(`../components/ArticleTeaserList.vue`),
+    ImageSlider: () => import(`../components/ImageSlider.vue`),
+    LazyHydrate,
+    LogoTeaserList: () => import(`../components/LogoTeaserList.vue`),
   },
   created() {
     this.imageSlides = [
