@@ -25,6 +25,8 @@
     <div class="o-container">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           :md="markdownText"
         />
       </LazyHydrate>
@@ -33,6 +35,8 @@
     <div class="o-container o-vertical-spacing">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           md="## Counter (loadOnInteraction)"
         />
       </LazyHydrate>
@@ -47,6 +51,8 @@
     <div class="o-container o-vertical-spacing">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           md="## Slider (loadWhenVisible)"
         />
       </LazyHydrate>
@@ -85,6 +91,8 @@
     <div class="o-container">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           :md="markdownText2"
         />
       </LazyHydrate>
@@ -105,6 +113,8 @@
     <div class="o-container">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           :md="markdownText"
         />
       </LazyHydrate>
@@ -137,6 +147,8 @@
     <div class="o-container o-vertical-spacing">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           md="## Slider (loadWhenVisible)"
         />
       </LazyHydrate>
@@ -166,6 +178,8 @@
     <div class="o-container o-vertical-spacing">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           md="## Slider (loadWhenVisible)"
         />
       </LazyHydrate>
@@ -177,6 +191,8 @@
     <div class="o-container">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           :md="markdownText"
         />
       </LazyHydrate>
@@ -197,6 +213,8 @@
     <div class="o-container">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           :md="markdownText2"
         />
       </LazyHydrate>
@@ -220,6 +238,8 @@
     <div class="o-container o-vertical-spacing">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           md="## Slider (loadWhenVisible)"
         />
       </LazyHydrate>
@@ -249,6 +269,8 @@
     <div class="o-container o-vertical-spacing">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           md="## Slider (loadWhenVisible)"
         />
       </LazyHydrate>
@@ -260,6 +282,8 @@
     <div class="o-container">
       <LazyHydrate ssr-only>
         <AppMarkdown
+          slot-scope="{ hydrated }"
+          v-if="hydrated"
           :md="markdownText"
         />
       </LazyHydrate>
